@@ -17,7 +17,7 @@ defmodule FirstPhoenixProjectWeb.Router do
   scope "/", FirstPhoenixProjectWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    resources "/", HomeController
   end
 
   # Other scopes may use custom stacks.

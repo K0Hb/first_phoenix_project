@@ -1,0 +1,17 @@
+<h3 class="center"> Форма редактирования слова</h3>
+<%= form_for @changeset, "/#{@word.id}", [as: :update], fn f -> %>
+  <%= text_input f, :eng, placeholder: @word.eng, class: "form-control" %>
+
+  <%= text_input f, :rus, placeholder: @word.rus, class: "form-control" %>
+
+  <%= if @changeset.errors != [] do %>
+    <h5 class="center"> Допущены ошибки:</h5>
+    <%= for {attr, {message, _}} <- @changeset.errors  do %>
+      <ul class="center">
+        <li><%= attr %> : <%= message %></li>
+      </ul>
+    <% end %>
+  <% end %>
+
+  <%= submit "Редактировать", class: "btn btn-primary green" %>
+<% end %>

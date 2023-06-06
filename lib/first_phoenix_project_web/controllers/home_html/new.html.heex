@@ -1,0 +1,18 @@
+<h3 class="center"> Форма создания слова </h3>
+<%= form_for @changeset, "/", [as: :create], fn f -> %>
+  <%= text_input f, :eng, placeholder: "англ", class: "form-control" %>
+
+  <%= text_input f, :rus, placeholder: "рус", class: "form-control" %>
+
+
+  <%= if @changeset.errors != [] do %>
+    <h5 class="center"> Допущены ошибки:</h5>
+    <%= for {attr, {message, _}} <- @changeset.errors  do %>
+      <ul class="center">
+        <li><%= attr %> : <%= message %></li>
+      </ul>
+    <% end %>
+  <% end %>
+
+  <%= submit "Создать", class: "btn btn-primary green" %>
+<% end %>

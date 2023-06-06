@@ -1,0 +1,22 @@
+<div class="flex justify-center">
+  <table>
+    <tr>
+      <th>Список слов</th>
+    </tr>
+    <tr>
+      <th>ENG</th>
+      <th>RUS</th>
+    </tr>
+    <%= for word <- @words do %>
+      <tr>
+        <td><%= button(word.eng, to: "/#{word.id}", method: "get") %></td>
+        <td><%= word.rus %></td>
+        <td><%= button("редактировать", to: "/#{word.id}/edit", method: "get") %></td>
+        <td><%= button("удалить", to: "/#{word.id}", method: "delete") %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<div>
+  <%= button("Создать слово", to: "/new", method: "get", class: "btn btn-primary green") %>
+</div>
